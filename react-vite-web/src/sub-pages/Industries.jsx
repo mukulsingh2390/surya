@@ -1,5 +1,5 @@
 import React from "react";
-import "./industries.css";
+import "./Industries.css";
 
 const industriesData = [
   { title: "AUTOMOBILES", img: "/industries/auto.png" },
