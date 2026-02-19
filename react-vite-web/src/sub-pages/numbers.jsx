@@ -1,5 +1,5 @@
 import React from "react";
-import "./Numbers.css";
+import "./numbers.css";
 import { FaUsers, FaMapMarkerAlt, FaUserTie } from "react-icons/fa";
 
 const Numbers = () => {
