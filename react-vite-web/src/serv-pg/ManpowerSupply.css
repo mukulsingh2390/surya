@@ -1,0 +1,118 @@
+/* Manpower Supply Section */
+.manpower-sec {
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+/* Hero Section */
+.manpower-sec-hero {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.manpower-sec-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 60px 40px;
+  text-align: center;
+  color: #fff;
+  max-width: 900px;
+  border-radius: 8px;
+}
+
+.manpower-sec-overlay h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.manpower-sec-overlay p {
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* Content Section */
+.manpower-sec-content {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.manpower-sec-content h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #0b2c4d;
+  font-weight: 700;
+}
+
+.manpower-sec-content p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #444;
+  max-width: 900px;
+  margin-bottom: 30px;
+}
+
+/* Features List */
+.manpower-sec-content ul {
+  list-style: none;
+  padding: 0;
+  max-width: 700px;
+}
+
+.manpower-sec-content ul li {
+  font-size: 16px;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  color: #333;
+}
+
+.manpower-sec-content ul li::before {
+  content: "✔";
+  color: #f4a261;
+  font-weight: bold;
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .manpower-sec-hero {
+    height: 60vh;
+  }
+
+  .manpower-sec-overlay h1 {
+    font-size: 30px;
+  }
+
+  .manpower-sec-overlay p {
+    font-size: 16px;
+  }
+
+  .manpower-sec-content h2 {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .manpower-sec-overlay {
+    padding: 40px 20px;
+  }
+
+  .manpower-sec-overlay h1 {
+    font-size: 24px;
+  }
+
+  .manpower-sec-content {
+    margin: 60px auto;
+  }
+}

@@ -1,0 +1,96 @@
+/* Home Page Wrapper */
+.home {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #0f0f0f;
+}
+
+/* Hero Section */
+.hero-section {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url("/images/hero-bg.jpg"); /* change image path if needed */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Hero Content */
+.hero-content {
+  max-width: 900px;
+  color: #ffffff;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero-content h1 span {
+  color: #ff3b3b;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #dddddd;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* Hero Buttons */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.hero-buttons a {
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #ff3b3b;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #e63232;
+}
+
+.btn-outline {
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.btn-outline:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+}

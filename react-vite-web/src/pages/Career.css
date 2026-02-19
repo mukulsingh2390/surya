@@ -1,0 +1,153 @@
+/* ===== HERO SECTION ===== */
+.career-hero {
+  position: relative;
+  height: 350px;
+  width: 100%;
+}
+
+.career-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.career-hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+
+/* ===== JOB SECTION ===== */
+.job-section {
+  padding: 60px 8%;
+  background: #f9f9f9;
+}
+
+.job-card {
+  background: #ffffff;
+  margin-bottom: 50px;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* FLEX LAYOUT */
+.job-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+/* IMAGE LEFT SIDE */
+.job-image-container {
+  flex: 1;
+}
+
+.job-image-container img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* TEXT RIGHT SIDE */
+.job-text {
+  flex: 1.5;
+}
+
+.job-label {
+  font-size: 13px;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+.job-text h2 {
+  font-size: 28px;
+  margin: 10px 0 20px;
+}
+
+.job-text p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.job-text ul {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.job-text li {
+  margin-bottom: 8px;
+}
+
+/* APPLY BUTTON */
+.apply-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #a10e0e;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.apply-btn:hover {
+  background: #444;
+}
+
+
+/* ===== FORM SECTION ===== */
+.career-form {
+  padding: 60px 8%;
+  background: #fff;
+  text-align: center;
+}
+
+.resume-form {
+  margin-top: 30px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.form-grid input,
+.form-grid select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: #eb1313;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background: #444;
+}
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .job-content {
+    flex-direction: column;
+  }
+
+  .job-image-container img {
+    height: 250px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
