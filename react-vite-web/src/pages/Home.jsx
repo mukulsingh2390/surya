@@ -1,5 +1,5 @@
 import Hero from "../components/Hero";
-import OurServices from "../sub-pages/OurServices";
+import OurServices from "../sub-pages/ourservices";
 import Numbers from "../sub-pages/Numbers";
 import Contact from "./Contact";
 import Industries from "../sub-pages/industries";
