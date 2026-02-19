@@ -1,22 +1,18 @@
 import Hero from "../components/Hero";
-import OurServices from "../sub-pages/ourservices";
-import Numbers from "../sub-pages/Numbers";
+import OurServices from "../sub-pages/OurServices.jsx";
+import Numbers from "../sub-pages/Numbers.jsx";
+import Industries from "../sub-pages/Industries.jsx";
+import Testimonials from "../sub-pages/Testimonials.jsx";
 import Contact from "./Contact";
-import Industries from "../sub-pages/industries";
-import Testimonials from "../sub-pages/testimonials";
 
 const Home = () => {
   return (
     <>
       <Hero />
-
-      {/* Our Services Section */}
       <OurServices />
-       <Numbers />
-       <Industries/>
-       <Testimonials/>
-
-      {/* Contact Section */}
+      <Numbers />
+      <Industries />
+      <Testimonials />
       <Contact />
     </>
   );
