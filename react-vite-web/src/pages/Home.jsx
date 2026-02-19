@@ -1,6 +1,6 @@
 import Hero from "../components/Hero";
 import OurServices from "../sub-pages/ourservices";
-import Numbers from "../sub-pages/numbers";
+import Numbers from "../sub-pages/Numbers";
 import Contact from "./Contact";
 import Industries from "../sub-pages/industries";
 import Testimonials from "../sub-pages/testimonials";
