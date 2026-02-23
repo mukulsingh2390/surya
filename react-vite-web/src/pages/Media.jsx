@@ -6,7 +6,7 @@ const Media = () => {
     <>
       {/* Media Hero Section */}
       <section className="media-hero">
-        <img src="/media3.png" alt="Media Banner" />
+        <img src="/mediamain.jpeg" alt="Media Banner" />
         <div className="media-hero-overlay">
           <h1></h1>
         </div>

@@ -7,7 +7,7 @@ const Services = () => {
     <>
       {/* Services Hero Section */}
       <section className="services-hero">
-        <img src="/servo.jpeg" alt="Our Services" />
+        <img src="/servicesmain.jpeg" alt="Our Services" />
         <div className="services-hero-overlay">
           <h1></h1>
         </div>

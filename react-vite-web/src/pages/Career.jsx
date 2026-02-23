@@ -6,7 +6,7 @@ const Career = () => {
     <>
       {/* Career Hero Section */}
       <section className="career-hero">
-        <img src="/career.jpeg" alt="Career Banner" />
+        <img src="/careermain.jpeg" alt="Career Banner" />
         <div className="career-hero-overlay"></div>
       </section>
 

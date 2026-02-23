@@ -7,16 +7,9 @@ const AboutUs = () => {
     <>
       {/* HERO SECTION */}
       <section className="about-hero">
-        <img src="/about.jpeg" alt="About Surya Security Services" />
+        <img src="/aboutmain.jpeg" alt="About Surya Security Services" />
 
-        <div className="about-hero-overlay">
-          <div className="hero-box">
-            <h1>About Us</h1>
-            <p>
-              Professional Security & Housekeeping Services in Maharashtra
-            </p>
-          </div>
-        </div>
+       
       </section>
 
       {/* ABOUT SECTION */}
