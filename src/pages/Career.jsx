@@ -130,7 +130,7 @@ const Career = () => {
 
       try {
         const response = await fetch(
-          "http://192.168.1.45:9090/api/submit-resume",
+          "https://securitywebsite-5o90.onrender.com/api/",
           {
             method: "POST",
             body: formData,
