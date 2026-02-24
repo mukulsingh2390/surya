@@ -140,7 +140,7 @@ const Career = () => {
         const result = await response.text();
 
         if (response.ok) {
-          alert(result);
+          alert(result); 
           form.reset();
         } else {
           alert("Error: " + result);
@@ -190,7 +190,7 @@ const Career = () => {
 
       <input
         type="file"
-        name="resume"
+        name="file"
         accept=".pdf,.doc,.docx"
         required
       />
