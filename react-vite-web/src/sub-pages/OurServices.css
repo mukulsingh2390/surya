@@ -1,0 +1,153 @@
+.our-services {
+  padding: 80px 50px;
+  background: #f4f6f8;
+  text-align: center;
+}
+
+/* MAIN HEADING */
+.services-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 60px;
+  color: #111;
+}
+
+/* CARD GRID */
+.services-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* CARD */
+.service-card {
+  background: #ffffff;
+  padding: 40px 30px;
+
+  /* TRUE OVAL SHAPE */
+  border-radius: 50% / 25%;
+
+  text-align: left;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+
+  /* ANIMATION SETUP */
+  transform: translateY(25px);
+  opacity: 0;
+  animation: slideUp 0.8s ease forwards;
+
+  transition: 
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease,
+    color 0.35s ease;
+}
+
+/* STAGGER EFFECT */
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* HOVER EFFECT — SAME FOR ALL CARDS */
+.service-card:hover,
+.service-card.active:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+  background: #ff3b3b;
+}
+
+/* TEXT COLOR ON HOVER */
+.service-card:hover h3,
+.service-card:hover p,
+.service-card.active:hover h3,
+.service-card.active:hover p {
+  color: #ffffff;
+}
+
+/* ACTIVE CARD (NORMAL STATE ONLY) */
+.service-card.active {
+  background: #eff0f4;
+  color: #130404;
+}
+
+.service-card.active p,
+.service-card.active h3 {
+  color: #0b0505;
+}
+
+/* ICON */
+.service-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #053569;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* ICON POP ON HOVER */
+.service-card:hover .service-icon,
+.service-card.active:hover .service-icon {
+  transform: translateY(-5px) scale(1.1);
+  color: #ffffff;
+}
+
+/* TEXT */
+.service-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.service-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #040303;
+}
+
+/* READ MORE */
+.read-more {
+  display: inline-block;
+  margin-top: 20px;
+  font-weight: 600;
+  color: #555;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+/* READ MORE ON HOVER */
+.service-card:hover .read-more,
+.service-card.active:hover .read-more {
+  color: #ffffff;
+}
+
+.active-link {
+  color: #ff3b3b;
+}
+
+/* SLIDE UP KEYFRAME */
+@keyframes slideUp {
+  from {
+    transform: translateY(25px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .services-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .services-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .services-title {
+    font-size: 30px;
+  }
+}

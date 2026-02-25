@@ -1,0 +1,65 @@
+.res-housekeeping-sec {
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Hero Section */
+.res-housekeeping-hero {
+  height: 70vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.res-housekeeping-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  padding: 40px;
+  max-width: 800px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.res-housekeeping-overlay h1 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.res-housekeeping-overlay p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Content Section */
+.res-housekeeping-content {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.res-housekeeping-content h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.res-housekeeping-content p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+.res-housekeeping-content ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.res-housekeeping-content ul li {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
