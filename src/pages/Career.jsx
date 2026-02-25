@@ -2,6 +2,56 @@ import React from "react";
 import "./Career.css";
 
 const Career = () => {
+  // ✅ Form submit handler
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    // Phone validation
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phonePattern.test(form.phone.value)) {
+      alert("Please enter a valid 10-digit phone number.");
+      return;
+    }
+
+    // File validation
+    if (form.file.files.length === 0) {
+      alert("Please upload your resume.");
+      return;
+    }
+
+    // Prepare FormData
+    const formData = new FormData();
+    formData.append("name", form.name.value);
+    formData.append("email", form.email.value);
+    formData.append("phone", form.phone.value);
+    formData.append("service", form.service.value);
+    formData.append("jobPosition", form.position.value);
+    formData.append("file", form.file.files[0]);
+
+    try {
+      const response = await fetch(
+        "https://securitywebsite-5o90.onrender.com/api/submit-resume", // Render backend
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const result = await response.text();
+
+      if (response.ok) {
+        alert("Form submitted successfully: " + result);
+        form.reset();
+      } else {
+        alert("Error submitting form: " + result);
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Backend not reachable! Check your Render deployment.");
+    }
+  };
+
   return (
     <>
       {/* Career Hero Section */}
@@ -12,23 +62,19 @@ const Career = () => {
 
       {/* Job Description Section */}
       <section className="job-section">
-
         {/* Job 1 */}
         <div className="job-card">
           <div className="job-content">
-            {/* LEFT IMAGE */}
             <div className="job-image-container">
               <img src="/about2.jpg" alt="Security Guard" />
             </div>
 
-            {/* RIGHT TEXT */}
             <div className="job-text">
               <span className="job-label">JOB DESCRIPTION</span>
               <h2>Security Guard</h2>
-
               <p>
-                A Security Guard plays a crucial role in maintaining the safety and
-                security of a designated area, property, or individuals.
+                A Security Guard plays a crucial role in maintaining the safety
+                and security of a designated area, property, or individuals.
               </p>
 
               <h4>Key Responsibilities:</h4>
@@ -64,10 +110,9 @@ const Career = () => {
             <div className="job-text">
               <span className="job-label">JOB DESCRIPTION</span>
               <h2>House Keeping Staff</h2>
-
               <p>
-                Housekeeping Staff members help maintain cleanliness and hygiene in
-                offices, hotels, hospitals, and residential facilities.
+                Housekeeping Staff members help maintain cleanliness and hygiene
+                in offices, hotels, hospitals, and residential facilities.
               </p>
 
               <h4>Key Responsibilities:</h4>
@@ -92,116 +137,57 @@ const Career = () => {
             </div>
           </div>
         </div>
-
       </section>
 
-    {/* Resume Submission Form */}
-<section className="career-form" id="resume-form">
-  <h2>Submit Your Resume!</h2>
+      {/* Resume Submission Form */}
+      <section className="career-form" id="resume-form">
+        <h2>Submit Your Resume!</h2>
 
-  <form
-    className="resume-form"
-    onSubmit={async (e) => {
-      e.preventDefault();
+        <form className="resume-form" onSubmit={handleSubmit}>
+          <div className="form-grid">
+            <input type="text" name="name" placeholder="Your Name" required />
 
-      const form = e.target;
-      const phonePattern = /^[0-9]{10}$/;
+            <select name="service" required>
+              <option value="">Select Service</option>
+              <option>Private Security Services</option>
+              <option>House Keeping Services</option>
+              <option>Human Resource Outsourcing Services</option>
+            </select>
 
-      // Phone validation
-      if (!phonePattern.test(form.phone.value)) {
-        alert("Please enter a valid 10-digit phone number.");
-        return;
-      }
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+            />
 
-      // File validation
-      if (form.resume.files.length === 0) {
-        alert("Please upload your resume.");
-        return;
-      }
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              required
+            />
 
-      // 🔥 Create FormData for file upload
-      const formData = new FormData();
-      formData.append("name", form.name.value);
-      formData.append("email", form.email.value);
-      formData.append("phone", form.phone.value);
-      formData.append("service", form.service.value);
-      formData.append("jobPosition", form.position.value); // must match backend
-      formData.append("file", form.resume.files[0]);       // must match backend
+            <input
+              type="text"
+              name="position"
+              placeholder="Job Position"
+              required
+            />
 
-      try {
-        const response = await fetch(
-          "https://securitywebsite-5o90.onrender.com/api/submit-resume",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
+            <input
+              type="file"
+              name="file"
+              accept=".pdf,.doc,.docx"
+              required
+            />
+          </div>
 
-        const result = await response.text();
-
-        if (response.ok) {
-          alert(result); 
-          form.reset();
-        } else {
-          alert("Error: " + result);
-        }
-
-      } catch (error) {
-        console.error(error);
-        alert("Backend not reachable!");
-      }
-    }}
-  >
-    <div className="form-grid">
-      <input
-        type="text"
-        name="name"
-        placeholder="Your Name"
-        required
-      />
-
-      <select name="service" required>
-        <option value="">Select Service</option>
-        <option>Private Security Services</option>
-        <option>House Keeping Services</option>
-        <option>Human Resource Outsourcing Services</option>
-      </select>
-
-      <input
-        type="email"
-        name="email"
-        placeholder="Email Address"
-        required
-      />
-
-      <input
-        type="tel"
-        name="phone"
-        placeholder="Phone Number"
-        required
-      />
-
-      <input
-        type="text"
-        name="position"
-        placeholder="Job Position"
-        required
-      />
-
-      <input
-        type="file"
-        name="file"
-        accept=".pdf,.doc,.docx"
-        required
-      />
-    </div>
-
-    <button type="submit" className="submit-btn">
-      SUBMIT
-    </button>
-  </form>
-</section>
-
+          <button type="submit" className="submit-btn">
+            SUBMIT
+          </button>
+        </form>
+      </section>
     </>
   );
 };
