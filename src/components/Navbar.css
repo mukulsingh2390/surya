@@ -1,4 +1,5 @@
 /* ================= TOP BAR ================= */
+
 .top-bar {
   background: #2f2f2f;
   color: #ffffff;
@@ -22,12 +23,13 @@
 
 
 /* ================= MAIN NAVBAR ================= */
+
 .navbar {
   background: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 40px;
+  padding: 8px 40px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 100;
@@ -35,6 +37,7 @@
 
 
 /* ================= LOGO ================= */
+
 .logo img {
   height: 58px;
   cursor: pointer;
@@ -47,6 +50,7 @@
 
 
 /* ================= NAV LINKS ================= */
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -60,8 +64,6 @@
   position: relative;
 }
 
-
-/* NavLink styling */
 .nav-links a {
   text-decoration: none;
   color: #222;
@@ -70,14 +72,10 @@
   transition: all 0.3s ease;
 }
 
-
-/* Hover */
 .nav-links a:hover {
   color: #e63946;
 }
 
-
-/* Active NavLink */
 .nav-links a.active {
   color: #e63946;
   border-bottom: 2px solid #e63946;
@@ -85,6 +83,7 @@
 
 
 /* ================= DROPDOWN ================= */
+
 .dropdown {
   position: relative;
 }
@@ -120,8 +119,7 @@
   border-bottom: none;
 }
 
-.dropdown-menu li a:hover,
-.dropdown-menu li a.active {
+.dropdown-menu li a:hover {
   background: #e53935;
   color: #ffffff;
 }
@@ -132,16 +130,63 @@
 
 
 /* ================= HAMBURGER ICON ================= */
+
 .menu-icon {
   display: none;
-  font-size: 26px;
+  width: 30px;
+  height: 22px;
+  position: relative;
   cursor: pointer;
-  color: #222;
   z-index: 1001;
 }
 
 
+/* Hamburger lines */
+
+.menu-icon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #222;
+  border-radius: 3px;
+  transition: 0.3s ease;
+}
+
+/* line positions */
+
+.menu-icon span:nth-child(1) {
+  top: 0;
+}
+
+.menu-icon span:nth-child(2) {
+  top: 9px;
+}
+
+.menu-icon span:nth-child(3) {
+  top: 18px;
+}
+
+
+/* ================= X ANIMATION ================= */
+
+.menu-icon.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+}
+
+.menu-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 9px;
+}
+
+
 /* ================= TABLET ================= */
+
 @media (max-width: 900px) {
 
   .top-bar {
@@ -152,30 +197,12 @@
     padding: 10px 20px;
   }
 
-  .nav-links {
-    gap: 18px;
-  }
-
 }
 
 
-/* ================= MOBILE NAVBAR ================= */
+/* ================= MOBILE ================= */
+
 @media (max-width: 768px) {
-
-  .top-bar {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 8px 12px;
-    font-size: 12px;
-    gap: 4px;
-  }
-
-  .top-left,
-  .top-right {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
 
   .navbar {
     padding: 10px 18px;
@@ -186,6 +213,7 @@
   }
 
   .nav-links {
+
     position: absolute;
     top: 68px;
     left: 0;
@@ -208,8 +236,6 @@
 
     box-shadow: 0 12px 25px rgba(0,0,0,0.12);
     border-top: 1px solid #eee;
-
-    z-index: 1000;
   }
 
   .nav-links.active {
@@ -230,10 +256,6 @@
     font-size: 16px;
   }
 
-  .nav-links a:hover {
-    background: #f5f5f5;
-  }
-
   .logo img {
     height: 48px;
   }
@@ -242,6 +264,7 @@
 
 
 /* ================= SMALL MOBILE ================= */
+
 @media (max-width: 480px) {
 
   .logo img {

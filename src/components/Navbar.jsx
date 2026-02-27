@@ -1,45 +1,105 @@
+import React, { useState } from "react";
 import "./Navbar.css";
-import { FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
 import logo from "../assets/logo2.png";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <>
-      {/* Top Bar */}
+
+      {/* TOP BAR */}
       <div className="top-bar">
+
         <div className="top-left">
-          <FaMapMarkerAlt />
-          <span>
-            Office No 201, 10 Square Building, Near Mount Carmel School,
-            Lulla Nagar, Pune - 411040
-          </span>
+          <span>Surya Security Services</span>
         </div>
 
         <div className="top-right">
-          <FaPhoneAlt />
-          <span>+91 9922155556 / </span>
-          <span>+91 9822146056</span>
+          <span>Trusted Protection Provider</span>
         </div>
+
       </div>
 
-      {/* Main Navbar */}
+
+      {/* MAIN NAVBAR */}
       <nav className="navbar">
+
+        {/* LOGO */}
         <div className="logo">
-          <NavLink to="/">
+          <NavLink to="/" onClick={closeMenu}>
             <img src={logo} alt="Surya Security Services" />
           </NavLink>
         </div>
 
-        <ul className="nav-links">
-          <li><NavLink to="/" end>Home</NavLink></li>
-          <li><NavLink to="/about">About Us</NavLink></li>
-          <li><NavLink to="/services">Services</NavLink></li>
-          <li><NavLink to="/media">Media</NavLink></li>
-          <li><NavLink to="/career">Career</NavLink></li>
-          <li><NavLink to="/contact">Contact</NavLink></li>
+
+        {/* NAV LINKS */}
+        <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
+
+          <li>
+            <NavLink to="/" onClick={closeMenu}>
+              Home
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/about" onClick={closeMenu}>
+              About
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/services" onClick={closeMenu}>
+              Services
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/career" onClick={closeMenu}>
+              Career
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/media" onClick={closeMenu}>
+              Media
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/contact" onClick={closeMenu}>
+              Contact
+            </NavLink>
+          </li>
+
         </ul>
+
+
+        {/* HAMBURGER ICON */}
+        <div
+          className={`menu-icon ${menuOpen ? "active" : ""}`}
+          onClick={toggleMenu}
+        >
+
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </div>
+
+
       </nav>
+
     </>
   );
 };

@@ -18,6 +18,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  padding: 0 15px;
 }
 
 .media-hero-overlay h1 {
@@ -38,6 +40,7 @@
   margin: 0 auto 50px;
   color: #555;
   font-size: 16px;
+  padding: 0 10px;
 }
 
 /* Media Grid */
@@ -80,4 +83,116 @@
 .media-content span {
   font-size: 14px;
   color: #777;
+}
+
+/* ================================
+   LARGE LAPTOP (1200px and down)
+================================ */
+@media (max-width: 1200px) {
+
+  .media-hero-overlay h1 {
+    font-size: 42px;
+  }
+
+}
+
+/* ================================
+   TABLET (992px and down)
+================================ */
+@media (max-width: 992px) {
+
+  .media {
+    padding: 50px 6%;
+  }
+
+  .media-hero {
+    height: 260px;
+  }
+
+  .media-hero-overlay h1 {
+    font-size: 36px;
+  }
+
+}
+
+/* ================================
+   MOBILE (768px and down)
+================================ */
+@media (max-width: 768px) {
+
+  .media {
+    padding: 40px 20px;
+  }
+
+  .media-hero {
+    height: 220px;
+  }
+
+  .media-hero-overlay h1 {
+    font-size: 28px;
+    letter-spacing: 1px;
+  }
+
+  .media p {
+    font-size: 15px;
+  }
+
+  .media-grid {
+    gap: 20px;
+  }
+
+  .media-card img {
+    height: 180px;
+  }
+
+}
+
+/* ================================
+   SMALL MOBILE (480px and down)
+================================ */
+@media (max-width: 480px) {
+
+  .media {
+    padding: 35px 15px;
+  }
+
+  .media-hero {
+    height: 180px;
+  }
+
+  .media-hero-overlay h1 {
+    font-size: 22px;
+  }
+
+  .media p {
+    font-size: 14px;
+  }
+
+  .media-content h3 {
+    font-size: 16px;
+  }
+
+  .media-content span {
+    font-size: 13px;
+  }
+
+  .media-card img {
+    height: 160px;
+  }
+
+}
+
+/* ================================
+   EXTRA SMALL DEVICES (360px)
+================================ */
+@media (max-width: 360px) {
+
+  .media-hero-overlay h1 {
+    font-size: 20px;
+  }
+
+  .media p {
+    font-size: 13px;
+  }
+
 }
