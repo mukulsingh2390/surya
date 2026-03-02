@@ -5,7 +5,25 @@ const Contact = () => {
 
   const [loading, setLoading] = useState(false);
 
+  // Popup state
+  const [popup, setPopup] = useState({
+    show: false,
+    type: "",
+    message: "",
+    data: null
+  });
+
+  const closePopup = () => {
+    setPopup({
+      show: false,
+      type: "",
+      message: "",
+      data: null
+    });
+  };
+
   const handleSubmit = async (e) => {
+
     e.preventDefault();
 
     const form = e.target;
@@ -13,25 +31,40 @@ const Contact = () => {
     const phonePattern = /^[0-9]{10}$/;
 
     if (!phonePattern.test(form.phone.value)) {
-      alert("Please enter a valid 10-digit phone number.");
+
+      setPopup({
+        show: true,
+        type: "error",
+        message: "Please enter a valid 10-digit phone number."
+      });
+
       return;
     }
 
     if (form.message.value.trim().length < 10) {
-      alert("Message must be at least 10 characters long.");
+
+      setPopup({
+        show: true,
+        type: "error",
+        message: "Message must be at least 10 characters long."
+      });
+
       return;
     }
 
     const formData = {
+
       name: form.name.value,
       email: form.email.value,
       service: form.service.value,
       phone: form.phone.value,
       message: form.message.value,
       consent: form.consent.checked,
+
     };
 
     try {
+
       setLoading(true);
 
       const response = await fetch(
@@ -45,42 +78,109 @@ const Contact = () => {
         }
       );
 
-      // ✅ SAFE RESPONSE HANDLING (JSON or TEXT both supported)
       let result;
 
       try {
+
         result = await response.json();
+
       } catch {
+
         const text = await response.text();
         result = { message: text };
+
       }
 
       if (response.ok) {
-        alert(result.message || "Message sent successfully!");
+
+        setPopup({
+          show: true,
+          type: "success",
+          message: result.message || "Message sent successfully!",
+          data: formData
+        });
+
         form.reset();
+
       } else {
-        alert(result.message || "Failed to send message.");
+
+        setPopup({
+          show: true,
+          type: "error",
+          message: result.message || "Failed to send message."
+        });
+
       }
 
     } catch (error) {
-      console.error("Error:", error);
-      alert("Server error. Please try again later.");
+
+      setPopup({
+        show: true,
+        type: "error",
+        message: "Server error. Please try again later."
+      });
+
     } finally {
+
       setLoading(false);
+
     }
+
   };
 
   return (
+
     <section className="contact">
+
+      {/* Popup Modal */}
+      {popup.show && (
+
+        <div className="popup-overlay">
+
+          <div className="popup-box">
+
+            <button className="popup-close" onClick={closePopup}>
+              ×
+            </button>
+
+            <h3 className={popup.type}>
+              {popup.type === "success"
+                ? "Message Sent Successfully"
+                : "Error"}
+            </h3>
+
+            <p>{popup.message}</p>
+
+            {popup.data && (
+
+              <div className="popup-details">
+
+                <p><strong>Name:</strong> {popup.data.name}</p>
+
+                <p><strong>Email:</strong> {popup.data.email}</p>
+
+                <p><strong>Phone:</strong> {popup.data.phone}</p>
+
+                <p><strong>Service:</strong> {popup.data.service}</p>
+
+                <p><strong>Message:</strong> {popup.data.message}</p>
+
+              </div>
+
+            )}
+
+          </div>
+
+        </div>
+
+      )}
 
       <span className="contact-subtitle">CONTACT US</span>
 
       <h2 className="contact-title">How can we help</h2>
 
-      {/* Top Section */}
       <div className="contact-top">
 
-        {/* Address Card */}
         <div className="contact-card">
 
           <h4>Surya Security Services Office</h4>
@@ -98,7 +198,6 @@ const Contact = () => {
 
         </div>
 
-        {/* Map */}
         <div className="contact-map">
 
           <iframe
@@ -111,27 +210,15 @@ const Contact = () => {
 
       </div>
 
-      {/* Contact Form */}
       <div className="contact-form-card">
 
         <h3>Get In Touch</h3>
 
         <form className="contact-form" onSubmit={handleSubmit}>
 
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter Name"
-            required
-            minLength="3"
-          />
+          <input name="name" placeholder="Enter Name" required />
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter Email Id"
-            required
-          />
+          <input name="email" type="email" placeholder="Enter Email Id" required />
 
           <select name="service" required>
             <option value="">Select Service</option>
@@ -140,21 +227,9 @@ const Contact = () => {
             <option>Event Security</option>
           </select>
 
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Enter Phone No"
-            pattern="[0-9]{10}"
-            required
-          />
+          <input name="phone" placeholder="Enter Phone No" required />
 
-          <textarea
-            name="message"
-            placeholder="Message"
-            rows="4"
-            required
-            minLength="10"
-          ></textarea>
+          <textarea name="message" placeholder="Message" required />
 
           <label className="consent">
             <input type="checkbox" name="consent" required />
@@ -163,7 +238,7 @@ const Contact = () => {
             </span>
           </label>
 
-          <button type="submit" disabled={loading}>
+          <button disabled={loading}>
             {loading ? "Sending..." : "Submit"}
           </button>
 
@@ -172,7 +247,9 @@ const Contact = () => {
       </div>
 
     </section>
+
   );
+
 };
 
 export default Contact;
