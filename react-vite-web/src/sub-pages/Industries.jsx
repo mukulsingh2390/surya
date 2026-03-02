@@ -2,18 +2,18 @@ import React from "react";
 import "./Industries.css";
 
 const industriesData = [
-  { title: "AUTOMOBILES", img: "/industries/auto.png" },
-  { title: "EDUCATIONAL INSTITUTIONS", img: "/industries/edu4.png" },
-  { title: "BANKING", img: "/industries/banking.png" },
-  { title: "IT", img: "/industries/it.png" },
-  { title: "GOVERNMENT", img: "/industries/govern.png" },
-  { title: "HOSPITALS", img: "/industries/hospital.png" },
-  { title: "MANUFACTURING", img: "/industries/mfg2.png" },
-  { title: "CONSTRUCTION", img: "/industries/construction.png" },
-  { title: "RETAIL", img: "/industries/retail.png" },
-  { title: "LOGISTICS", img: "/industries/logi54.png" },
-  { title: "EVENTS", img: "/industries/events23.png" },
-  { title: "RESIDENTIAL", img: "/industries/resid.png" }
+  { title: "AUTOMOBILES", img: "/industries/automobiles.png" },
+  { title: "EDUCATIONAL INSTITUTIONS", img: "/industries/education4.png" },
+  { title: "BANKING", img: "/industries/bank4.png" },
+  { title: "IT", img: "/industries/it4.png" },
+  { title: "GOVERNMENT", img: "/industries/gov.png" },
+  { title: "HOSPITALS", img: "/industries/hospital4.png" },
+  { title: "MANUFACTURING", img: "/industries/MANUFACTURING.jpg.jpeg" },
+  { title: "CONSTRUCTION", img: "/industries/construction4.png" },
+  { title: "RETAIL", img: "/industries/retails.png" },
+  { title: "LOGISTICS", img: "/industries/logistics.png" },
+  { title: "EVENTS", img: "/industries/event.png" },
+  { title: "RESIDENTIAL", img: "/industries/RECDENTIALO.png" }
 ];
 
 const Industries = () => {
