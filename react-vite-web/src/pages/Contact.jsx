@@ -45,17 +45,25 @@ const Contact = () => {
         }
       );
 
-      const result = await response.json();
+      // ✅ SAFE RESPONSE HANDLING (JSON or TEXT both supported)
+      let result;
+
+      try {
+        result = await response.json();
+      } catch {
+        const text = await response.text();
+        result = { message: text };
+      }
 
       if (response.ok) {
-        alert("Message sent successfully!");
+        alert(result.message || "Message sent successfully!");
         form.reset();
       } else {
         alert(result.message || "Failed to send message.");
       }
 
     } catch (error) {
-      console.error(error);
+      console.error("Error:", error);
       alert("Server error. Please try again later.");
     } finally {
       setLoading(false);
@@ -64,7 +72,9 @@ const Contact = () => {
 
   return (
     <section className="contact">
+
       <span className="contact-subtitle">CONTACT US</span>
+
       <h2 className="contact-title">How can we help</h2>
 
       {/* Top Section */}
@@ -72,6 +82,7 @@ const Contact = () => {
 
         {/* Address Card */}
         <div className="contact-card">
+
           <h4>Surya Security Services Office</h4>
 
           <p>
@@ -84,15 +95,18 @@ const Contact = () => {
             <p>✉️ suryainfrastructure21@gmail.com</p>
             <p>✉️ info@suryasecurityservices.co.in</p>
           </div>
+
         </div>
 
         {/* Map */}
         <div className="contact-map">
+
           <iframe
             title="Surya Security Services Office Location"
             src="https://www.google.com/maps?q=10%20Square,%20opposite%20Ishwar%20Petrol%20Pump,%20near%20Mount%20Carmel%20School,%20Lullanagar,%20Pune,%20Maharashtra%20411040&output=embed"
             loading="lazy"
           ></iframe>
+
         </div>
 
       </div>
