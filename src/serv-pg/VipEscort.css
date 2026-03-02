@@ -1,0 +1,118 @@
+/* VIP Escort Section */
+.vip-escort-sec {
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+/* Hero Section */
+.vip-escort-hero {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vip-escort-overlay {
+  background: rgba(0, 0, 0, 0.65);
+  padding: 60px 40px;
+  text-align: center;
+  color: #fff;
+  max-width: 900px;
+  border-radius: 8px;
+}
+
+.vip-escort-overlay h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.vip-escort-overlay p {
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* Content Section */
+.vip-escort-content {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.vip-escort-content h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #0b2c4d;
+  font-weight: 700;
+}
+
+.vip-escort-content p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #444;
+  max-width: 900px;
+  margin-bottom: 30px;
+}
+
+/* Features List */
+.vip-escort-content ul {
+  list-style: none;
+  padding: 0;
+  max-width: 700px;
+}
+
+.vip-escort-content ul li {
+  font-size: 16px;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  color: #333;
+}
+
+.vip-escort-content ul li::before {
+  content: "✔";
+  color: #d4af37; /* gold accent for VIP */
+  font-weight: bold;
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .vip-escort-hero {
+    height: 60vh;
+  }
+
+  .vip-escort-overlay h1 {
+    font-size: 30px;
+  }
+
+  .vip-escort-overlay p {
+    font-size: 16px;
+  }
+
+  .vip-escort-content h2 {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vip-escort-overlay {
+    padding: 40px 20px;
+  }
+
+  .vip-escort-overlay h1 {
+    font-size: 24px;
+  }
+
+  .vip-escort-content {
+    margin: 60px auto;
+  }
+}

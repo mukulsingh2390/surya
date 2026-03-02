@@ -1,0 +1,198 @@
+/* Media Hero Section */
+.media-hero {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.media-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: centre;
+}
+
+.media-hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 15px;
+}
+
+.media-hero-overlay h1 {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* Media Page Content */
+.media {
+  padding: 60px 8%;
+  text-align: center;
+}
+
+.media p {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  color: #555;
+  font-size: 16px;
+  padding: 0 10px;
+}
+
+/* Media Grid */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+/* Media Card */
+.media-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.media-card:hover {
+  transform: translateY(-6px);
+}
+
+.media-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.media-content {
+  padding: 18px;
+  text-align: left;
+}
+
+.media-content h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  color: #222;
+}
+
+.media-content span {
+  font-size: 14px;
+  color: #777;
+}
+
+/* ================================
+   LARGE LAPTOP (1200px and down)
+================================ */
+@media (max-width: 1200px) {
+
+  .media-hero-overlay h1 {
+    font-size: 42px;
+  }
+
+}
+
+/* ================================
+   TABLET (992px and down)
+================================ */
+@media (max-width: 992px) {
+
+  .media {
+    padding: 50px 6%;
+  }
+
+  .media-hero {
+    height: 260px;
+  }
+
+  .media-hero-overlay h1 {
+    font-size: 36px;
+  }
+
+}
+
+/* ================================
+   MOBILE (768px and down)
+================================ */
+@media (max-width: 768px) {
+
+  .media {
+    padding: 40px 20px;
+  }
+
+  .media-hero {
+    height: 220px;
+  }
+
+  .media-hero-overlay h1 {
+    font-size: 28px;
+    letter-spacing: 1px;
+  }
+
+  .media p {
+    font-size: 15px;
+  }
+
+  .media-grid {
+    gap: 20px;
+  }
+
+  .media-card img {
+    height: 180px;
+  }
+
+}
+
+/* ================================
+   SMALL MOBILE (480px and down)
+================================ */
+@media (max-width: 480px) {
+
+  .media {
+    padding: 35px 15px;
+  }
+
+  .media-hero {
+    height: 180px;
+  }
+
+  .media-hero-overlay h1 {
+    font-size: 22px;
+  }
+
+  .media p {
+    font-size: 14px;
+  }
+
+  .media-content h3 {
+    font-size: 16px;
+  }
+
+  .media-content span {
+    font-size: 13px;
+  }
+
+  .media-card img {
+    height: 160px;
+  }
+
+}
+
+/* ================================
+   EXTRA SMALL DEVICES (360px)
+================================ */
+@media (max-width: 360px) {
+
+  .media-hero-overlay h1 {
+    font-size: 20px;
+  }
+
+  .media p {
+    font-size: 13px;
+  }
+
+}
