@@ -1,164 +1,195 @@
-import React, { useState } from "react";
-import "./Contact.css";
+import React from "react";
+import "./Career.css";
 
-const Contact = () => {
-
-  const [loading, setLoading] = useState(false);
-
+const Career = () => {
+  // ✅ Form submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const form = e.target;
 
+    // Phone validation
     const phonePattern = /^[0-9]{10}$/;
-
     if (!phonePattern.test(form.phone.value)) {
       alert("Please enter a valid 10-digit phone number.");
       return;
     }
 
-    if (form.message.value.trim().length < 10) {
-      alert("Message must be at least 10 characters long.");
+    // File validation
+    if (form.file.files.length === 0) {
+      alert("Please upload your resume.");
       return;
     }
 
-    const formData = {
-      name: form.name.value,
-      email: form.email.value,
-      service: form.service.value,
-      phone: form.phone.value,
-      message: form.message.value,
-      consent: form.consent.checked,
-    };
+    // Prepare FormData
+    const formData = new FormData();
+    formData.append("name", form.name.value);
+    formData.append("email", form.email.value);
+    formData.append("phone", form.phone.value);
+    formData.append("service", form.service.value);
+    formData.append("jobPosition", form.position.value);
+    formData.append("file", form.file.files[0]);
 
     try {
-      setLoading(true);
-
       const response = await fetch(
-        "https://securitywebsite-5o90.onrender.com/api/contact",
+        "https://securitywebsite-5o90.onrender.com/api/submit-resume", // Render backend
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
+          body: formData,
         }
       );
 
-      const result = await response.json();
+      const result = await response.text();
 
       if (response.ok) {
-        alert("Message sent successfully!");
+        alert("Form submitted successfully: " + result);
         form.reset();
       } else {
-        alert(result.message || "Failed to send message.");
+        alert("Error submitting form: " + result);
       }
-
     } catch (error) {
-      console.error(error);
-      alert("Server error. Please try again later.");
-    } finally {
-      setLoading(false);
+      console.error("Submission error:", error);
+      alert("Backend not reachable! Check your Render deployment.");
     }
   };
 
   return (
-    <section className="contact">
-      <span className="contact-subtitle">CONTACT US</span>
-      <h2 className="contact-title">How can we help</h2>
+    <>
+      {/* Career Hero Section */}
+      <section className="career-hero">
+        <img src="/careermain.jpeg" alt="Career Banner" />
+        <div className="career-hero-overlay"></div>
+      </section>
 
-      {/* Top Section */}
-      <div className="contact-top">
+      {/* Job Description Section */}
+      <section className="job-section">
+        {/* Job 1 */}
+        <div className="job-card">
+          <div className="job-content">
+            <div className="job-image-container">
+              <img src="/about2.jpg" alt="Security Guard" />
+            </div>
 
-        {/* Address Card */}
-        <div className="contact-card">
-          <h4>Surya Security Services Office</h4>
+            <div className="job-text">
+              <span className="job-label">JOB DESCRIPTION</span>
+              <h2>Security Guard</h2>
+              <p>
+                A Security Guard plays a crucial role in maintaining the safety
+                and security of a designated area, property, or individuals.
+              </p>
 
-          <p>
-            Office No 201, 10 Square Building Near Mount Carmel School,<br />
-            Lulla Nagar, Pune – 411040
-          </p>
+              <h4>Key Responsibilities:</h4>
+              <ul>
+                <li>Conduct regular patrols and monitor surveillance systems</li>
+                <li>Control access and verify visitor identity</li>
+                <li>Respond quickly to emergencies and incidents</li>
+                <li>Maintain incident and visitor records</li>
+              </ul>
 
-          <div className="contact-details">
-            <p>📞 +91 9922155556 / +91 9822146056</p>
-            <p>✉️ suryainfrastructure21@gmail.com</p>
-            <p>✉️ info@suryasecurityservices.co.in</p>
+              <h4>Requirements:</h4>
+              <ul>
+                <li>High school diploma or equivalent</li>
+                <li>Experience in security services preferred</li>
+                <li>Good communication and observation skills</li>
+                <li>Physically fit and alert</li>
+              </ul>
+
+              <a href="#resume-form" className="apply-btn">
+                APPLY NOW
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Map */}
-        <div className="contact-map">
-          <iframe
-            title="Surya Security Services Office Location"
-            src="https://www.google.com/maps?q=10%20Square,%20opposite%20Ishwar%20Petrol%20Pump,%20near%20Mount%20Carmel%20School,%20Lullanagar,%20Pune,%20Maharashtra%20411040&output=embed"
-            loading="lazy"
-          ></iframe>
+        {/* Job 2 */}
+        <div className="job-card">
+          <div className="job-content">
+            <div className="job-image-container">
+              <img src="/about1.jpg" alt="Housekeeping" />
+            </div>
+
+            <div className="job-text">
+              <span className="job-label">JOB DESCRIPTION</span>
+              <h2>House Keeping Staff</h2>
+              <p>
+                Housekeeping Staff members help maintain cleanliness and hygiene
+                in offices, hotels, hospitals, and residential facilities.
+              </p>
+
+              <h4>Key Responsibilities:</h4>
+              <ul>
+                <li>Cleaning, mopping, dusting, and sanitizing areas</li>
+                <li>Preparing rooms and replenishing supplies</li>
+                <li>Waste collection and disposal</li>
+                <li>Maintaining hygiene standards</li>
+              </ul>
+
+              <h4>Requirements:</h4>
+              <ul>
+                <li>Previous housekeeping experience preferred</li>
+                <li>Knowledge of cleaning tools and materials</li>
+                <li>Physically fit and detail-oriented</li>
+                <li>Flexible working hours</li>
+              </ul>
+
+              <a href="#resume-form" className="apply-btn">
+                APPLY NOW
+              </a>
+            </div>
+          </div>
         </div>
+      </section>
 
-      </div>
+      {/* Resume Submission Form */}
+      <section className="career-form" id="resume-form">
+        <h2>Submit Your Resume!</h2>
 
-      {/* Contact Form */}
-      <div className="contact-form-card">
+        <form className="resume-form" onSubmit={handleSubmit}>
+          <div className="form-grid">
+            <input type="text" name="name" placeholder="Your Name" required />
 
-        <h3>Get In Touch</h3>
+            <select name="service" required>
+              <option value="">Select Service</option>
+              <option>Private Security Services</option>
+              <option>House Keeping Services</option>
+              <option>Human Resource Outsourcing Services</option>
+            </select>
 
-        <form className="contact-form" onSubmit={handleSubmit}>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+            />
 
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter Name"
-            required
-            minLength="3"
-          />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              required
+            />
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter Email Id"
-            required
-          />
+            <input
+              type="text"
+              name="position"
+              placeholder="Job Position"
+              required
+            />
 
-          <select name="service" required>
-            <option value="">Select Service</option>
-            <option>Private Security</option>
-            <option>Corporate Security</option>
-            <option>Event Security</option>
-          </select>
+            <input
+              type="file"
+              name="file"
+              accept=".pdf,.doc,.docx"
+              required
+            />
+          </div>
 
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Enter Phone No"
-            pattern="[0-9]{10}"
-            required
-          />
-
-          <textarea
-            name="message"
-            placeholder="Message"
-            rows="4"
-            required
-            minLength="10"
-          ></textarea>
-
-          <label className="consent">
-            <input type="checkbox" name="consent" required />
-            <span>
-              I hereby authorize to send notifications on SMS / Messages / Promotional / Informational messages.
-            </span>
-          </label>
-
-          <button type="submit" disabled={loading}>
-            {loading ? "Sending..." : "Submit"}
+          <button type="submit" className="submit-btn">
+            SUBMIT
           </button>
-
         </form>
-
-      </div>
-
-    </section>
+      </section>
+    </>
   );
 };
 
-export default Contact;
+export default Career;
