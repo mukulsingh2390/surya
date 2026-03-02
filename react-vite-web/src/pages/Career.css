@@ -1,4 +1,5 @@
 /* ===== HERO SECTION ===== */
+
 .career-hero {
   position: relative;
   height: 350px;
@@ -8,7 +9,7 @@
 .career-hero img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* fixed typo */
   object-position: top;
 }
 
@@ -19,6 +20,7 @@
 
 
 /* ===== JOB SECTION ===== */
+
 .job-section {
   padding: 60px 8%;
   background: #f9f9f9;
@@ -32,14 +34,18 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
+
 /* FLEX LAYOUT */
+
 .job-content {
   display: flex;
   align-items: center;
   gap: 40px;
 }
 
+
 /* IMAGE LEFT SIDE */
+
 .job-image-container {
   flex: 1;
 }
@@ -51,7 +57,9 @@
   border-radius: 10px;
 }
 
+
 /* TEXT RIGHT SIDE */
+
 .job-text {
   flex: 1.5;
 }
@@ -81,7 +89,9 @@
   margin-bottom: 8px;
 }
 
+
 /* APPLY BUTTON */
+
 .apply-btn {
   display: inline-block;
   padding: 10px 20px;
@@ -98,6 +108,7 @@
 
 
 /* ===== FORM SECTION ===== */
+
 .career-form {
   padding: 60px 8%;
   background: #fff;
@@ -137,17 +148,125 @@
 }
 
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
+/* ===== TABLET RESPONSIVE ===== */
+
+@media (max-width: 1024px) {
+
+  .job-section {
+    padding: 50px 6%;
+  }
+
+  .job-card {
+    padding: 30px;
+  }
+
   .job-content {
-    flex-direction: column;
+    gap: 30px;
   }
 
   .job-image-container img {
-    height: 250px;
+    height: 280px;
+  }
+
+  .career-form {
+    padding: 50px 6%;
+  }
+
+}
+
+
+/* ===== MOBILE RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+
+  .career-hero {
+    height: 260px;
+  }
+
+  .job-section {
+    padding: 40px 5%;
+  }
+
+  .job-card {
+    padding: 25px;
+    margin-bottom: 35px;
+  }
+
+  .job-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .job-image-container img {
+    height: 220px;
+  }
+
+  .job-text h2 {
+    font-size: 22px;
+  }
+
+  .job-text p {
+    font-size: 15px;
+  }
+
+  .career-form {
+    padding: 40px 5%;
   }
 
   .form-grid {
     grid-template-columns: 1fr;
   }
+
+  .submit-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+
+}
+
+
+/* ===== SMALL MOBILE RESPONSIVE ===== */
+
+@media (max-width: 480px) {
+
+  .career-hero {
+    height: 220px;
+  }
+
+  .job-section {
+    padding: 30px 4%;
+  }
+
+  .job-card {
+    padding: 20px;
+  }
+
+  .job-image-container img {
+    height: 180px;
+  }
+
+  .job-text h2 {
+    font-size: 20px;
+  }
+
+  .job-text p,
+  .job-text li {
+    font-size: 14px;
+  }
+
+  .career-form {
+    padding: 30px 4%;
+  }
+
+  .form-grid input,
+  .form-grid select {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .submit-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
 }

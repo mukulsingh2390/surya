@@ -1,0 +1,134 @@
+/* ================= SECTION ================= */
+.partners-section {
+  width: 100%;
+  padding: 80px 0;
+  background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ================= TITLE ================= */
+.partners-title {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #0b2c5f;
+  letter-spacing: 1px;
+}
+
+/* ================= SLIDER ================= */
+.partners-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fade effect left */
+.partners-slider::before,
+.partners-slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.partners-slider::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+
+.partners-slider::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+
+/* ================= TRACK ================= */
+.partners-track {
+  display: flex;
+  align-items: center;
+  animation: scroll 35s linear infinite;
+}
+
+/* Pause animation on hover */
+.partners-slider:hover .partners-track {
+  animation-play-state: paused;
+}
+
+/* ================= CARD ================= */
+.partner-card {
+  min-width: 200px;
+  height: 130px;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 15px;
+
+  transition: all 0.3s ease;
+}
+
+/* Hover card effect */
+.partner-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ================= LOGO ================= */
+.partner-card img {
+  max-width: 150px;
+  max-height: 90px;
+  object-fit: contain;
+
+  /* original colors */
+  filter: none;
+
+  transition: all 0.3s ease;
+}
+
+/* Logo hover effect */
+.partner-card:hover img {
+  transform: scale(1.1);
+}
+
+/* ================= ANIMATION ================= */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  .partners-section {
+    padding: 60px 0;
+  }
+
+  .partners-title {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+
+  .partner-card {
+    min-width: 140px;
+    height: 100px;
+    margin: 0 12px;
+    padding: 10px;
+  }
+
+  .partner-card img {
+    max-width: 110px;
+    max-height: 70px;
+  }
+
+}

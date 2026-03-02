@@ -6,19 +6,59 @@
   overflow: hidden;
 }
 
+/* Desktop */
 .services-hero img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: centre;
+  object-position: center center;
+  display: block;
 }
 
+/* Overlay */
 .services-hero-overlay {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  padding: 0 15px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .services-hero {
+    height: 260px;
+  }
+
+  .services-hero img {
+    object-position: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .services-hero {
+    height: 200px;
+  }
+
+  .services-hero img {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .services-hero {
+    height: 160px;
+  }
+
+  .services-hero img {
+    object-fit: cover;
+    object-position: center;
+  }
 }
 
 /* ================= MAIN SERVICES ================= */
@@ -32,6 +72,7 @@
   text-align: center;
   max-width: 800px;
   margin: 0 auto 60px;
+  padding: 0 15px;
 }
 
 .services-header h2 {
@@ -103,13 +144,11 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; /* ✅ ONLY IMAGE HEIGHT */
+  height: 100%;
   aspect-ratio: 1 / 1;
-
   background: rgba(230, 57, 70, 0.9);
   border-radius: 14px;
-
-  transform: translateY(100%); /* starts from bottom of image */
+  transform: translateY(100%);
   transition: transform 0.4s ease;
   pointer-events: none;
 }
@@ -126,17 +165,14 @@
   width: 100%;
   height: 100%;
   aspect-ratio: 1 / 1;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 30px;
   color: #fff;
   font-size: 15px;
   line-height: 1.7;
   text-align: center;
-
   transform: translateY(100%);
   opacity: 0;
   transition: transform 0.4s ease, opacity 0.3s ease;
@@ -148,7 +184,7 @@
   opacity: 1;
 }
 
-/* ================= HEADING (OUTSIDE & SAFE) ================= */
+/* ================= HEADING ================= */
 .service-card h4 {
   margin-top: 16px;
   font-size: 19px;
@@ -176,8 +212,18 @@
   }
 }
 
-/* ================= RESPONSIVE ================= */
+/* ================= LARGE LAPTOP ================= */
+@media (max-width: 1200px) {
+
+  .services {
+    padding: 65px 40px;
+  }
+
+}
+
+/* ================= TABLET ================= */
 @media (max-width: 992px) {
+
   .services {
     padding: 60px 30px;
   }
@@ -185,23 +231,61 @@
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
 }
 
-@media (max-width: 576px) {
-  .services-hero {
-    height: 220px;
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  .services {
+    padding: 50px 20px;
   }
 
   .services-header h2 {
     font-size: 30px;
   }
 
+  .services-header p {
+    font-size: 15px;
+  }
+
   .services-subtitle {
     font-size: 22px;
   }
 
+  .service-card h4 {
+    font-size: 18px;
+  }
+
+}
+
+/* ================= SMALL MOBILE ================= */
+@media (max-width: 576px) {
+
+  .services-hero {
+    height: 220px;
+  }
+
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 35px;
+    gap: 30px;
   }
+
+}
+
+/* ================= EXTRA SMALL ================= */
+@media (max-width: 360px) {
+
+  .services-header h2 {
+    font-size: 26px;
+  }
+
+  .services-subtitle {
+    font-size: 20px;
+  }
+
+  .service-card h4 {
+    font-size: 16px;
+  }
+
 }
