@@ -11,23 +11,31 @@ const testimonialsData = [
   },
   {
     text: "We express our sincere appreciation for the exceptional security support provided, marked by vigilance, integrity, and unwavering commitment to maintaining a secure and well-managed workplace environment.",
-    company: " Mantra Properties",
+    company: "Mantra Properties",
   },
 ];
 
 const Testimonials = () => {
   return (
     <section className="testimonials">
-      <h2 className="testimonials-title">Testimonials</h2>
+      <div className="testimonials-wrapper">
+        <h2 className="testimonials-title">Testimonials</h2>
 
-      <div className="testimonials-container">
-        {testimonialsData.map((item, index) => (
-          <div className="testimonial-card" key={index}>
-            <div className="quote-icon">“</div>
-            <p className="testimonial-text">{item.text}</p>
-            <span className="testimonial-company">{item.company}</span>
-          </div>
-        ))}
+        <div className="testimonials-container">
+          {testimonialsData.map((item, index) => (
+            <div className="testimonial-card" key={index}>
+              <div className="quote-icon">“</div>
+
+              <p className="testimonial-text">
+                {item.text}
+              </p>
+
+              <span className="testimonial-company">
+                — {item.company}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
