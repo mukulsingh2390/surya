@@ -2,7 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import ScrollToTop from "./ScrollToTop";   // ✅ ADD THIS
+import ScrollToTop from "./ScrollToTop";
+import WhatsappButton from "./sub-pages/WhatsappButton"; // ✅ ADD THIS
 
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
@@ -30,7 +31,7 @@ import OfficeSupport from "./serv-pg/OfficeSupport";
 function App() {
   return (
     <Router>
-      <ScrollToTop />   {/* ✅ ADD THIS HERE */}
+      <ScrollToTop />
 
       <Navbar />
 
@@ -43,7 +44,7 @@ function App() {
         <Route path="/career" element={<Career />} />
         <Route path="/contact" element={<Contact />} />
 
-        {/* ===== Service Detail Pages ===== */}
+        {/* Service Detail Pages */}
         <Route path="/serv-pg/industrial-security" element={<IndustrialSecurity />} />
         <Route path="/serv-pg/bank-security" element={<BankSecurity />} />
         <Route path="/serv-pg/corporate-security" element={<CorporateSecurity />} />
@@ -61,6 +62,10 @@ function App() {
       </Routes>
 
       <Footer />
+
+      {/* ✅ WhatsApp Floating Button */}
+      <WhatsappButton />
+
     </Router>
   );
 }

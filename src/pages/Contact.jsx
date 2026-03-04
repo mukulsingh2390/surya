@@ -1,17 +1,189 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Contact.css";
 
 const Contact = () => {
+
+  const [loading, setLoading] = useState(false);
+
+  // 🔒 Freeze body scroll when loading
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [loading]);
+
+  // Popup state
+  const [popup, setPopup] = useState({
+    show: false,
+    type: "",
+    message: "",
+    data: null
+  });
+
+  const closePopup = () => {
+    setPopup({
+      show: false,
+      type: "",
+      message: "",
+      data: null
+    });
+  };
+
+  const handleSubmit = async (e) => {
+
+    e.preventDefault();
+
+    const form = e.target;
+
+    const phonePattern = /^[0-9]{10}$/;
+
+    if (!phonePattern.test(form.phone.value)) {
+      setPopup({
+        show: true,
+        type: "error",
+        message: "Please enter a valid 10-digit phone number."
+      });
+      return;
+    }
+
+    if (form.message.value.trim().length < 10) {
+      setPopup({
+        show: true,
+        type: "error",
+        message: "Message must be at least 10 characters long."
+      });
+      return;
+    }
+
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+      service: form.service.value,
+      phone: form.phone.value,
+      message: form.message.value,
+      consent: form.consent.checked,
+    };
+
+    try {
+
+      setLoading(true);
+
+      const response = await fetch(
+        "https://securitywebsite-5o90.onrender.com/api/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      let result;
+
+      try {
+        result = await response.json();
+      } catch {
+        const text = await response.text();
+        result = { message: text };
+      }
+
+      if (response.ok) {
+        setPopup({
+          show: true,
+          type: "success",
+          message: result.message || "Message sent successfully!",
+          data: formData
+        });
+        form.reset();
+      } else {
+        setPopup({
+          show: true,
+          type: "error",
+          message: result.message || "Failed to send message."
+        });
+      }
+
+    } catch (error) {
+      setPopup({
+        show: true,
+        type: "error",
+        message: "Server error. Please try again later."
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
+
     <section className="contact">
+
+      {/* 🔥 LOADING OVERLAY (FREEZE SCREEN) */}
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-box">
+            <div className="spinner"></div>
+            <p>Sending Message...</p>
+          </div>
+        </div>
+      )}
+
+      {/* Popup Modal */}
+      {popup.show && (
+
+        <div className="popup-overlay">
+
+          <div className="popup-box">
+
+            <button className="popup-close" onClick={closePopup}>
+              ×
+            </button>
+
+            <h3 className={popup.type}>
+              {popup.type === "success"
+                ? "Message Sent Successfully"
+                : "Error"}
+            </h3>
+
+            <p>{popup.message}</p>
+
+            {popup.data && (
+
+              <div className="popup-details">
+
+                <p><strong>Name:</strong> {popup.data.name}</p>
+                <p><strong>Email:</strong> {popup.data.email}</p>
+                <p><strong>Phone:</strong> {popup.data.phone}</p>
+                <p><strong>Service:</strong> {popup.data.service}</p>
+                <p><strong>Message:</strong> {popup.data.message}</p>
+
+              </div>
+
+            )}
+
+          </div>
+
+        </div>
+
+      )}
+
       <span className="contact-subtitle">CONTACT US</span>
+
       <h2 className="contact-title">How can we help</h2>
 
-      {/* Top Section */}
       <div className="contact-top">
-        {/* Address Card */}
+
         <div className="contact-card">
+
           <h4>Surya Security Services Office</h4>
+
           <p>
             Office No 201, 10 Square Building Near Mount Carmel School,<br />
             Lulla Nagar, Pune – 411040
@@ -22,97 +194,59 @@ const Contact = () => {
             <p>✉️ suryainfrastructure21@gmail.com</p>
             <p>✉️ info@suryasecurityservices.co.in</p>
           </div>
+
         </div>
 
-        {/* Map */}
         <div className="contact-map">
-         <iframe
-  title="Surya Security Services Office Location"
-  src="https://www.google.com/maps?q=10%20Square,%20opposite%20Ishwar%20Petrol%20Pump,%20near%20Mount%20Carmel%20School,%20Lullanagar,%20Pune,%20Maharashtra%20411040&output=embed"
-  loading="lazy"
-></iframe>
+
+          <iframe
+            title="Surya Security Services Office Location"
+            src="https://www.google.com/maps?q=10%20Square,%20opposite%20Ishwar%20Petrol%20Pump,%20near%20Mount%20Carmel%20School,%20Lullanagar,%20Pune,%20Maharashtra%20411040&output=embed"
+            loading="lazy"
+          ></iframe>
 
         </div>
+
       </div>
 
-    {/* Large Contact Form Card */}
-<div className="contact-form-card">
-  <h3>Get In Touch</h3>
+      <div className="contact-form-card">
 
-  <form
-    className="contact-form"
-    onSubmit={(e) => {
-      e.preventDefault();
+        <h3>Get In Touch</h3>
 
-      const form = e.target;
-      const phonePattern = /^[0-9]{10}$/;
+        <form className="contact-form" onSubmit={handleSubmit}>
 
-      if (!phonePattern.test(form.phone.value)) {
-        alert("Please enter a valid 10-digit phone number.");
-        return;
-      }
+          <input name="name" placeholder="Enter Name" required />
+          <input name="email" type="email" placeholder="Enter Email Id" required />
 
-      if (form.message.value.trim().length < 10) {
-        alert("Message must be at least 10 characters long.");
-        return;
-      }
+          <select name="service" required>
+            <option value="">Select Service</option>
+            <option>Private Security</option>
+            <option>Corporate Security</option>
+            <option>Event Security</option>
+          </select>
 
-      alert("Form submitted successfully!");
-      form.reset();
-    }}
-  >
-    <input
-      type="text"
-      name="name"
-      placeholder="Enter Name"
-      required
-      minLength="3"
-    />
+          <input name="phone" placeholder="Enter Phone No" required />
+          <textarea name="message" placeholder="Message" required />
 
-    <input
-      type="email"
-      name="email"
-      placeholder="Enter Email Id"
-      required
-    />
+          <label className="consent">
+            <input type="checkbox" name="consent" required />
+            <span>
+              I hereby authorize to send notifications on SMS / Messages / Promotional / Informational messages.
+            </span>
+          </label>
 
-    <select name="service" required>
-      <option value="">Select Service</option>
-      <option>Private Security</option>
-      <option>Corporate Security</option>
-      <option>Event Security</option>
-    </select>
+          <button type="submit" disabled={loading}>
+            {loading ? "Sending..." : "Submit"}
+          </button>
 
-    <input
-      type="tel"
-      name="phone"
-      placeholder="Enter Phone No"
-      pattern="[0-9]{10}"
-      title="Enter a valid 10-digit phone number"
-      required
-    />
+        </form>
 
-    <textarea
-      name="message"
-      placeholder="Message"
-      rows="4"
-      required
-      minLength="10"
-    ></textarea>
+      </div>
 
-    <label className="consent">
-      <input type="checkbox" name="consent" required />
-      <span>
-        I hereby authorize to send notifications on SMS / Messages / Promotional / Informational messages.
-      </span>
-    </label>
-
-    <button type="submit">Submit</button>
-  </form>
-</div>
-</section>
+    </section>
 
   );
+
 };
 
 export default Contact;

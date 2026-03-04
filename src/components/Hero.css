@@ -5,7 +5,7 @@
   min-height: 100vh; /* changed from fixed height */
   height: auto;
 
-  background-position: center center;
+  background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
 

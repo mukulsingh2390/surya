@@ -22,11 +22,12 @@ const Navbar = () => {
       <div className="top-bar">
 
         <div className="top-left">
-          <span>Surya Security Services</span>
+          <span>Office No 201, 10 Square Building Near Mount Carmel School,
+Lulla Nagar, Pune – 411040</span>
         </div>
 
         <div className="top-right">
-          <span>Trusted Protection Provider</span>
+          <span>+91 9922155556 / +91 9822146056</span>
         </div>
 
       </div>

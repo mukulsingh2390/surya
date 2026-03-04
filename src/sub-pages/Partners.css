@@ -1,6 +1,7 @@
 /* ================= SECTION ================= */
 .partners-section {
   width: 100%;
+  height: auto;
   padding: 80px 0;
   background: linear-gradient(to bottom, #f8f9fa, #ffffff);
   text-align: center;
@@ -12,7 +13,7 @@
 .partners-title {
   font-size: 34px;
   font-weight: 700;
-  margin-bottom: 50px;
+  margin-bottom: 40px; /* reduced */
   color: #0b2c5f;
   letter-spacing: 1px;
 }
@@ -30,7 +31,7 @@
   content: "";
   position: absolute;
   top: 0;
-  width: 120px;
+  width: 80px; /* reduced fade */
   height: 100%;
   z-index: 2;
   pointer-events: none;
@@ -50,6 +51,7 @@
 .partners-track {
   display: flex;
   align-items: center;
+  gap: 8px; /* reduced gap between logos */
   animation: scroll 35s linear infinite;
 }
 
@@ -60,16 +62,20 @@
 
 /* ================= CARD ================= */
 .partner-card {
-  min-width: 200px;
-  height: 130px;
-  margin: 0 20px;
+  min-width: 240px;
+  height: 160px;
+
+  margin: 0 6px; /* reduced from 20px */
+  padding: 6px;  /* reduced from 20px */
+
   display: flex;
   align-items: center;
   justify-content: center;
 
   background: #ffffff;
   border-radius: 12px;
-  padding: 15px;
+
+  overflow: hidden; /* ensures proper center focus */
 
   transition: all 0.3s ease;
 }
@@ -77,24 +83,32 @@
 /* Hover card effect */
 .partner-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* ================= LOGO ================= */
 .partner-card img {
-  max-width: 150px;
-  max-height: 90px;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: 210px;   /* increased visible size */
+  max-height: 140px;
+
   object-fit: contain;
+  object-position: center center;
 
-  /* original colors */
-  filter: none;
+  margin: 0;          /* removed extra image margin */
+  padding: 0;
 
-  transition: all 0.3s ease;
+  display: block;
+
+  transition: transform 0.4s ease;
 }
 
-/* Logo hover effect */
+/* Logo hover zoom */
 .partner-card:hover img {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 /* ================= ANIMATION ================= */
@@ -116,19 +130,25 @@
 
   .partners-title {
     font-size: 26px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+  }
+
+  .partners-track {
+    gap: 6px;
   }
 
   .partner-card {
-    min-width: 140px;
-    height: 100px;
-    margin: 0 12px;
-    padding: 10px;
+    min-width: 180px;
+    height: 120px;
+    margin: 0 4px;
+    padding: 4px;
   }
 
   .partner-card img {
-    max-width: 110px;
-    max-height: 70px;
+    max-width: 160px;
+    max-height: 100px;
+    width: 100%;
+    height: 100%;
   }
 
 }
