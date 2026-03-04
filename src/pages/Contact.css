@@ -204,71 +204,17 @@
   position: relative;
 }
 
-.popup-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  border: none;
-  background: transparent;
-  font-size: 26px;
-  cursor: pointer;
-  color: #888;
-}
-
-.popup-close:hover {
-  color: #e53935;
-}
-
-.popup-box h3 {
-  margin-bottom: 10px;
-  font-size: 22px;
-}
-
-.popup-box .success {
-  color: #2e7d32;
-}
-
-.popup-box .error {
-  color: #c62828;
-}
-
-.popup-box p {
-  font-size: 15px;
-  color: #444;
-}
-
-.popup-details {
-  background: #f7f9fc;
-  padding: 12px;
-  border-radius: 8px;
-  margin-top: 10px;
-}
-
-.popup-details p {
-  margin: 4px 0;
-}
-
-@keyframes popupFade {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
+/* Loading Overlay */
 .loading-overlay {
   position: fixed;
-  inset: 0; /* important */
+  inset: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.65);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 99999; /* very high */
+  z-index: 99999;
   backdrop-filter: blur(5px);
 }
 
@@ -363,4 +309,10 @@
   .popup-box {
     padding: 22px;
   }
+}
+
+/* ✅ FIXED FREEZE SCROLL */
+.freeze-scroll {
+  overflow: hidden;
+  height: 100vh;
 }

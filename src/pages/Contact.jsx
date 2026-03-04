@@ -5,16 +5,16 @@ const Contact = () => {
 
   const [loading, setLoading] = useState(false);
 
-  // 🔒 Freeze body scroll when loading
+  // 🔒 Properly freeze full page when loading
   useEffect(() => {
     if (loading) {
-      document.body.style.overflow = "hidden";
+      document.body.classList.add("freeze-scroll");
     } else {
-      document.body.style.overflow = "auto";
+      document.body.classList.remove("freeze-scroll");
     }
 
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.classList.remove("freeze-scroll");
     };
   }, [loading]);
 
@@ -38,7 +38,6 @@ const Contact = () => {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
-
     const form = e.target;
 
     const phonePattern = /^[0-9]{10}$/;
@@ -137,9 +136,7 @@ const Contact = () => {
 
       {/* Popup Modal */}
       {popup.show && (
-
         <div className="popup-overlay">
-
           <div className="popup-box">
 
             <button className="popup-close" onClick={closePopup}>
@@ -155,35 +152,26 @@ const Contact = () => {
             <p>{popup.message}</p>
 
             {popup.data && (
-
               <div className="popup-details">
-
                 <p><strong>Name:</strong> {popup.data.name}</p>
                 <p><strong>Email:</strong> {popup.data.email}</p>
                 <p><strong>Phone:</strong> {popup.data.phone}</p>
                 <p><strong>Service:</strong> {popup.data.service}</p>
                 <p><strong>Message:</strong> {popup.data.message}</p>
-
               </div>
-
             )}
 
           </div>
-
         </div>
-
       )}
 
       <span className="contact-subtitle">CONTACT US</span>
-
       <h2 className="contact-title">How can we help</h2>
 
       <div className="contact-top">
 
         <div className="contact-card">
-
           <h4>Surya Security Services Office</h4>
-
           <p>
             Office No 201, 10 Square Building Near Mount Carmel School,<br />
             Lulla Nagar, Pune – 411040
@@ -194,17 +182,14 @@ const Contact = () => {
             <p>✉️ suryainfrastructure21@gmail.com</p>
             <p>✉️ info@suryasecurityservices.co.in</p>
           </div>
-
         </div>
 
         <div className="contact-map">
-
           <iframe
             title="Surya Security Services Office Location"
             src="https://www.google.com/maps?q=10%20Square,%20opposite%20Ishwar%20Petrol%20Pump,%20near%20Mount%20Carmel%20School,%20Lullanagar,%20Pune,%20Maharashtra%20411040&output=embed"
             loading="lazy"
           ></iframe>
-
         </div>
 
       </div>
@@ -244,9 +229,7 @@ const Contact = () => {
       </div>
 
     </section>
-
   );
-
 };
 
 export default Contact;
