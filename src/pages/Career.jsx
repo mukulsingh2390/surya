@@ -121,12 +121,13 @@ const Career = () => {
       )}
 
 
-     {/* ✅ Popup */}
+    {/* ✅ Popup */}
 {popup.show && (
   <div className="popup-overlay">
 
     <div className="popup-box">
 
+      {/* Close Button */}
       <button
         className="popup-close"
         onClick={() => setPopup({ show: false })}
@@ -134,18 +135,20 @@ const Career = () => {
         ×
       </button>
 
-      {/* Tick Icon */}
+      {/* Success Icon */}
       {popup.type === "success" && (
-        <div className="popup-icon"></div>
+        <div className="popup-icon">✓</div>
       )}
 
-      <h3 className={popup.type === "success" ? "success" : "error"}>
+      {/* Title */}
+      <h3 className={`popup-title ${popup.type}`}>
         {popup.type === "success"
-          ? "Message Sent Successfully ✅"
+          ? "Message Sent Successfully"
           : "Error"}
       </h3>
 
-      <p>{popup.message}</p>
+      {/* Message */}
+      <p className="popup-message">{popup.message}</p>
 
     </div>
 

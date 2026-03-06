@@ -161,67 +161,111 @@
 }
 
 
-/* ===== POPUP ===== */
-
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.55);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
+/* POPUP OVERLAY */
+.popup-overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(4px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
 }
 
-.popup-box {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 400px;
-  position: relative;
-  animation: popupFade 0.3s ease;
+/* POPUP BOX */
+.popup-box{
+  width:320px;
+  background:#f2f2f2;
+  border-radius:12px;
+  padding:40px 28px 30px;
+  text-align:center;
+  position:relative;
+  box-shadow:0 18px 40px rgba(0,0,0,0.35);
+  animation:popupScale 0.35s ease;
 }
 
-@keyframes popupFade {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
+/* CLOSE BUTTON */
+.popup-close{
+  position:absolute;
+  top:10px;
+  right:12px;
+  background:none;
+  border:none;
+  font-size:22px;
+  font-weight:bold;
+  color:#444;
+  cursor:pointer;
+}
+
+.popup-close:hover{
+  color:#000;
+}
+
+/* ICON */
+.popup-icon{
+  width:60px;
+  height:60px;
+  background:#12b347;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 15px;
+  font-size:28px;
+  color:#fff;
+  font-weight:bold;
+}
+
+/* TITLE */
+.popup-title{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+/* SUCCESS */
+.popup-title.success{
+  color:#12b347;
+}
+
+/* ERROR */
+.popup-title.error{
+  color:#e20e0e;
+}
+
+/* MESSAGE */
+.popup-message{
+  font-size:14px;
+  color:#666;
+  line-height:1.5;
+}
+
+/* ANIMATION */
+@keyframes popupScale{
+  0%{
+    opacity:0;
+    transform:scale(0.8);
   }
-  to {
-    transform: scale(1);
-    opacity: 1;
+  70%{
+    transform:scale(1.05);
+  }
+  100%{
+    opacity:1;
+    transform:scale(1);
   }
 }
 
-.popup-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  border: none;
-  background: none;
-  font-size: 22px;
-  cursor: pointer;
-}
+/* MOBILE */
+@media (max-width:600px){
 
-.success {
-  color: green;
-}
+  .popup-box{
+    width:85%;
+    padding:35px 20px;
+  }
 
-.error {
-  color: red;
-}
-
-.popup-details {
-  background: #f1f4f8;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 6px;
-  text-align: left;
-  font-size: 14px;
 }
 
 
