@@ -121,42 +121,36 @@ const Career = () => {
       )}
 
 
-      {/* ✅ Popup */}
-      {popup.show && (
-        <div className="popup-overlay">
+     {/* ✅ Popup */}
+{popup.show && (
+  <div className="popup-overlay">
 
-          <div className="popup-box">
+    <div className="popup-box">
 
-            <button
-              className="popup-close"
-              onClick={() => setPopup({ show: false })}
-            >
-              ×
-            </button>
+      <button
+        className="popup-close"
+        onClick={() => setPopup({ show: false })}
+      >
+        ×
+      </button>
 
-            <h3 className={popup.type === "success" ? "success" : "error"}>
-              {popup.type === "success"
-                ? "Message Sent Successfully"
-                : "Error"}
-            </h3>
-
-            <p>{popup.message}</p>
-
-            {popup.details && (
-              <div className="popup-details">
-                <p><b>Name:</b> {popup.details.name}</p>
-                <p><b>Email:</b> {popup.details.email}</p>
-                <p><b>Phone:</b> {popup.details.phone}</p>
-                <p><b>Service:</b> {popup.details.service}</p>
-                <p><b>Position:</b> {popup.details.position}</p>
-              </div>
-            )}
-
-          </div>
-
-        </div>
+      {/* Tick Icon */}
+      {popup.type === "success" && (
+        <div className="popup-icon">✓</div>
       )}
 
+      <h3 className={popup.type === "success" ? "success" : "error"}>
+        {popup.type === "success"
+          ? "Message Sent Successfully"
+          : "Error"}
+      </h3>
+
+      <p>{popup.message}</p>
+
+    </div>
+
+  </div>
+)}
 
 
       {/* Career Hero Section */}

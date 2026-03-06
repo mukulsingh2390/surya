@@ -134,36 +134,31 @@ const Contact = () => {
         </div>
       )}
 
-      {/* Popup Modal */}
-      {popup.show && (
-        <div className="popup-overlay">
-          <div className="popup-box">
+     {/* Popup Modal */}
+{popup.show && (
+  <div className="popup-overlay">
+    <div className="popup-box">
 
-            <button className="popup-close" onClick={closePopup}>
-              ×
-            </button>
+      <button className="popup-close" onClick={closePopup}>
+        ×
+      </button>
 
-            <h3 className={popup.type}>
-              {popup.type === "success"
-                ? "Message Sent Successfully"
-                : "Error"}
-            </h3>
+      {/* Tick Icon */}
+      <div className="popup-icon">
+        ✓
+      </div>
 
-            <p>{popup.message}</p>
+      <h3 className={popup.type}>
+        {popup.type === "success"
+          ? "Message Sent Successfully"
+          : "Error"}
+      </h3>
 
-            {popup.data && (
-              <div className="popup-details">
-                <p><strong>Name:</strong> {popup.data.name}</p>
-                <p><strong>Email:</strong> {popup.data.email}</p>
-                <p><strong>Phone:</strong> {popup.data.phone}</p>
-                <p><strong>Service:</strong> {popup.data.service}</p>
-                <p><strong>Message:</strong> {popup.data.message}</p>
-              </div>
-            )}
+      <p>{popup.message}</p>
 
-          </div>
-        </div>
-      )}
+    </div>
+  </div>
+)}
 
       <span className="contact-subtitle">CONTACT US</span>
       <h2 className="contact-title">How can we help</h2>
