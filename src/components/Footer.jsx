@@ -56,14 +56,11 @@ const Footer = () => {
         <div className="footer-social">
           <h4>Follow Us</h4>
           <div className="social-icons">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/share/1AjSMEjfXZ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
               <FaFacebookF />
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
               <FaTwitter />
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-              <FaYoutube />
             </a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
               <FaInstagram />
