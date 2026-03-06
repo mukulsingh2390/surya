@@ -31,7 +31,7 @@ const Testimonials = () => {
               </p>
 
               <span className="testimonial-company">
-                — {item.company}
+                 {item.company}
               </span>
             </div>
           ))}
