@@ -145,12 +145,12 @@ const Contact = () => {
 
       {/* Tick Icon */}
       <div className="popup-icon">
-        ✓
+  
       </div>
 
       <h3 className={popup.type}>
         {popup.type === "success"
-          ? "Message Sent Successfully"
+          ? "Message Sent Successfully ✅"
           : "Error"}
       </h3>
 

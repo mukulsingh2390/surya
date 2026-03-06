@@ -136,12 +136,12 @@ const Career = () => {
 
       {/* Tick Icon */}
       {popup.type === "success" && (
-        <div className="popup-icon">✓</div>
+        <div className="popup-icon"></div>
       )}
 
       <h3 className={popup.type === "success" ? "success" : "error"}>
         {popup.type === "success"
-          ? "Message Sent Successfully"
+          ? "Message Sent Successfully ✅"
           : "Error"}
       </h3>
 
