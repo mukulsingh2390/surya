@@ -256,7 +256,7 @@ const Career = () => {
 
               <option>Human Resource Outsourcing Services</option>
 
-              <option>Others</option>
+              <option>Others...</option>
 
 
             </select>
